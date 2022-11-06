@@ -9,12 +9,21 @@
     "@react-navigation/native-stack": "*",
     "@testing-library/jest-native": "*",
     "@testing-library/react-native": "*",
+    "metro-config": "*",
     "react": "*",
     "react-native": "*",
     "react-native-config": "*",
     "react-native-safe-area-context": "*",
     "react-native-screens": "*",
     "react-native-svg": "*",
-    "metro-config": "*"
+    "@react-navigation/core": "*",
+    "@storybook/addon-ondevice-actions": "*",
+    "@storybook/addon-ondevice-backgrounds": "*",
+    "@storybook/addon-ondevice-controls": "*",
+    "@storybook/addon-ondevice-notes": "*",
+    "@storybook/react-native": "*"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "*"
   }
 }

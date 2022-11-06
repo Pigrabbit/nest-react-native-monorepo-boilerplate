@@ -1,0 +1,20 @@
+{
+  "name": "@minion/design-system",
+  "version": "0.0.1",
+  "dependencies": {
+    "@react-navigation/core": "*",
+    "@react-navigation/native": "*",
+    "@storybook/addon-ondevice-actions": "*",
+    "@storybook/addon-ondevice-backgrounds": "*",
+    "@storybook/addon-ondevice-controls": "*",
+    "@storybook/addon-ondevice-notes": "*",
+    "@storybook/react-native": "*",
+    "@testing-library/jest-native": "*",
+    "react": "*",
+    "react-native": "*",
+    "react-native-safe-area-context": "*"
+  },
+  "devDependencies": {
+    "@storybook/addon-knobs": "^6.4.0"
+  }
+}
