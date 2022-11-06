@@ -6,8 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-// @ts-expect-error need typing for svg file
-import CheckIcon from '../../assets/image/checkbox.svg';
+import { CheckIcon } from '../../styles/assets';
 
 import Typography from '../Typography';
 import { checkBoxStyles, containerStyles, labelStyles } from './styles';

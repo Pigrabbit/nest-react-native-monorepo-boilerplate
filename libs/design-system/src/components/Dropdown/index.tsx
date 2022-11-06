@@ -3,12 +3,12 @@ import { StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
 
 import { useFocusEffect } from '@react-navigation/core';
 
-import { useDropdown } from '~/hook/useDropdown';
+import { useDropdown } from '../../hooks/useDropdown';
 import {
   ArrowDownBlackIcon,
   ArrowDownGrayIcon,
   ArrowUpBlackIcon,
-} from '~/util/assets';
+} from '../../styles/assets';
 
 import Typography from '../Typography';
 import { Option } from './DropdownContext';
@@ -43,7 +43,7 @@ const Dropdown = ({ options, name: key, disabled, style }: Props) => {
        */
       return initializeDropdown;
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []),
+    }, [])
   );
 
   const renderDropdownArrow = () => {
@@ -68,12 +68,14 @@ const Dropdown = ({ options, name: key, disabled, style }: Props) => {
           dropdownKey: key,
           initialValue: getSelectedOption(key) || options[0],
         });
-      }}>
+      }}
+    >
       <View style={styles.dropdown}>
         <Typography
           variant="description"
           fontWeight="bold"
-          style={disabled ? styles.textDisabled : {}}>
+          style={disabled ? styles.textDisabled : {}}
+        >
           {getSelectedOption(key)?.label || options[0].label}
         </Typography>
         {renderDropdownArrow()}

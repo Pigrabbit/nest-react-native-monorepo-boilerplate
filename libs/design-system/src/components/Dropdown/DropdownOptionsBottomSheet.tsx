@@ -6,10 +6,10 @@ import BottomSheet, {
   BottomSheetFlatList,
 } from '@gorhom/bottom-sheet';
 
-import { WINDOW_HEIGHT } from '~/constant/dimension';
-import { useDropdown } from '~/hook/useDropdown';
+import { useDropdown } from '../../hooks/useDropdown';
+import { WINDOW_HEIGHT } from '../../styles/dimension';
+import { CheckOrangeIcon } from '../../styles/assets';
 import { Colors } from '../../styles/colors';
-import { CheckOrangeIcon } from '~/util/assets';
 
 import Typography from '../Typography';
 import { Option } from './DropdownContext';
@@ -44,7 +44,7 @@ export const DropdownOptionsBottomSheet = () => {
       (focusedDropdownKey || '').length
         ? bottomSheetRef.current?.snapToIndex(0)
         : bottomSheetRef.current?.close(),
-    [focusedDropdownKey],
+    [focusedDropdownKey]
   );
 
   return (
@@ -58,7 +58,7 @@ export const DropdownOptionsBottomSheet = () => {
       onClose={hideDropdown}
       index={-1}
       handleIndicatorStyle={styles.handleIndicator}
-      backdropComponent={props => (
+      backdropComponent={(props) => (
         <BottomSheetBackdrop
           {...props}
           style={[props.style, styles.backdrop]}
@@ -66,7 +66,8 @@ export const DropdownOptionsBottomSheet = () => {
           disappearsOnIndex={-1}
           pressBehavior="close"
         />
-      )}>
+      )}
+    >
       <BottomSheetFlatList
         data={items}
         keyExtractor={({ label }) => label}
@@ -97,7 +98,8 @@ const OptionItem = ({
     activeOpacity={0.8}
     key={item.label}
     onPress={handlePress}
-    style={styles.option}>
+    style={styles.option}
+  >
     <Typography>{item.label}</Typography>
     {isSelected && <CheckOrangeIcon />}
   </TouchableOpacity>

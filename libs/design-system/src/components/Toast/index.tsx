@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
 
-import useToast from '~/hook/useToast';
-import { CheckGreenIcon } from '~/util/assets';
+import useToast from '../../hooks/useToast';
+import { CheckGreenIcon } from '../../styles/assets';
 
 import Typography from '../Typography';
 import { toastStyles } from './styles';
@@ -49,12 +49,14 @@ const Toast = () => {
   return (
     <Animated.View
       style={[toastStyles.container, { opacity, transform: [{ translateY }] }]}
-      pointerEvents="none">
+      pointerEvents="none"
+    >
       <CheckGreenIcon width="24" height="24" />
       <Typography
         style={toastStyles.message}
         numberOfLines={1}
-        ellipsizeMode="tail">
+        ellipsizeMode="tail"
+      >
         {message}
       </Typography>
     </Animated.View>

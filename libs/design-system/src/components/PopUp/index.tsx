@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { Modal, StyleSheet, View } from 'react-native';
 
-import usePopUp from '~/hook/usePopup';
+import usePopUp from '../../hooks/usePopup';
 
 import AlertPopUp from './AlertPopUp';
 import ConfirmPopUp from './ConfirmPopUp';

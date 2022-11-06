@@ -1,6 +1,6 @@
 import React from 'react';
 
-import usePopUp from '~/hook/usePopup';
+import usePopUp from '../../../hooks/usePopup';
 
 import OutlinedButton from '../../Button/OutlinedButton';
 import Typography from '../../Typography';
@@ -27,7 +27,8 @@ const AlertPopUp = ({
       <Typography
         style={textContentStyles.title}
         variant="subtitle"
-        fontWeight="bold">
+        fontWeight="bold"
+      >
         {title}
       </Typography>
     ) : null;

@@ -2,6 +2,7 @@
   "name": "@minion/design-system",
   "version": "0.0.1",
   "dependencies": {
+    "@gorhom/bottom-sheet": "^4.4.5",
     "@react-navigation/core": "*",
     "@react-navigation/native": "*",
     "@storybook/addon-ondevice-actions": "*",
@@ -12,9 +13,12 @@
     "@testing-library/jest-native": "*",
     "react": "*",
     "react-native": "*",
+    "react-native-gesture-handler": "*",
+    "react-native-reanimated": "*",
     "react-native-safe-area-context": "*"
   },
   "devDependencies": {
-    "@storybook/addon-knobs": "^6.4.0"
+    "@storybook/addon-knobs": "^6.4.0",
+    "babel-plugin-module-resolver": "*"
   }
 }
