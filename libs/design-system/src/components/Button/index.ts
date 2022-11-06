@@ -6,7 +6,9 @@ import SecondaryButtonComponent from './SecondaryButton';
 import TextPrimaryButtonCompoent from './TextPrimaryButton';
 import TextSecondaryButtonComponent from './TextSecondaryButton';
 import IconButtonComponent from './IconButton';
-import ButtonBaseComponent from './ButtonBase';
+import ButtonBaseComponent, {
+  ButtonBaseProps as ButtonBaseComponentProps,
+} from './ButtonBase';
 
 export { PrimaryButtonComponent as PrimaryButton };
 export { OutlinedButtonComponent as OutlinedButton };
@@ -15,3 +17,4 @@ export { TextPrimaryButtonCompoent as TextPrimaryButton };
 export { TextSecondaryButtonComponent as TextSecondaryButton };
 export { IconButtonComponent as IconButton };
 export { ButtonBaseComponent as ButtonBase };
+export { ButtonBaseComponentProps as ButtonBaseProps };

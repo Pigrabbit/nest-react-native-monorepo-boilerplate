@@ -16,7 +16,7 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStackNavigator = () => {
-  const [hasSignIn, setHasSignIn] = useState(true);
+  const [hasSignIn, setHasSignIn] = useState(false);
 
   const navigationRef =
     useRef<NavigationContainerRef<RootStackParamList>>(null);

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { WINDOW_WIDTH } from '~/constant/dimension';
+import { WINDOW_WIDTH } from '../../styles/dimension';
 import { Colors } from '../../styles/colors';
 
 export const toastStyles = StyleSheet.create({

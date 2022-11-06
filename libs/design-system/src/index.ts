@@ -29,3 +29,5 @@ export * from './components/Toast/ToastContext';
 export { ToggleComponent as Toggle };
 export { TypographyComponent as Typography };
 export { PopUpComponent as PopUp };
+
+export * from './styles/colors';
