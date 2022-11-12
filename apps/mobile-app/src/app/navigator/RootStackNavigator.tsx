@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
   NavigationContainer,
   NavigationContainerRef,
@@ -7,16 +7,22 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import WelcomeScreen from '../screen/WelcomeScreen';
 import MainTabNavigator from './MainTabNavigator';
+import OAuthLoginScreen from '../screen/OAuthLoginScreen';
+import { IconButton, CloseIcon } from '@minion/design-system';
+import { useAuth } from '../hook/useAuth';
 
 export type RootStackParamList = {
   WelcomeScreen: undefined;
   Main: undefined;
+  OAuthLoginScreen: {
+    oAuthMethod: 'kakao' | 'apple';
+  };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStackNavigator = () => {
-  const [hasSignIn, setHasSignIn] = useState(false);
+  const { authenticated } = useAuth();
 
   const navigationRef =
     useRef<NavigationContainerRef<RootStackParamList>>(null);
@@ -24,7 +30,7 @@ const RootStackNavigator = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
-        {hasSignIn ? (
+        {authenticated ? (
           <Stack.Group>
             <Stack.Screen
               name="Main"
@@ -38,6 +44,20 @@ const RootStackNavigator = () => {
               name="WelcomeScreen"
               component={WelcomeScreen}
               options={{ header: () => null }}
+            />
+            <Stack.Screen
+              name="OAuthLoginScreen"
+              component={OAuthLoginScreen}
+              options={{
+                presentation: 'modal',
+                headerTitle: '',
+                headerRight: () => (
+                  <IconButton
+                    icon={() => <CloseIcon />}
+                    onPress={() => navigationRef.current?.goBack()}
+                  />
+                ),
+              }}
             />
           </Stack.Group>
         )}

@@ -5,28 +5,41 @@ import {
   TextPrimaryButton,
   Typography,
 } from '@minion/design-system';
+import { useNavigation } from '@react-navigation/core';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { RootStackParamList } from '../../navigator/RootStackNavigator';
 import AppleButton from './AppleButton';
 import KakaoButton from './KakaoButton';
 
+type ScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'WelcomeScreen'
+>;
+
 const WelcomeScreen = () => {
+  const navigation = useNavigation<ScreenNavigationProp>();
   return (
     <Layout style={styles.container}>
       <Typography variant="h2">Welcome MobileApp 👋</Typography>
       <View style={{ flex: 1 }} />
-      <KakaoButton label="카카오톡으로 계속" style={styles.loginButton} />
-      <AppleButton label="Apple로 계속" style={styles.loginButton} />
-      <OutlinedButton
-        label={'회원가입'}
+      <KakaoButton
+        label="Sign in with Kakao"
         style={styles.loginButton}
-        // onPress={() => bottomSheetRef.current?.snapToIndex(0)}
+        onPress={() =>
+          navigation.navigate('OAuthLoginScreen', { oAuthMethod: 'kakao' })
+        }
       />
-      <TextPrimaryButton
-        label={'로그인'}
+      <AppleButton
+        label="Sign in with Apple"
         style={styles.loginButton}
-        // onPress={() => navigation.navigate('LoginScreen')}
+        onPress={() =>
+          navigation.navigate('OAuthLoginScreen', { oAuthMethod: 'apple' })
+        }
       />
+      <OutlinedButton label={'Sign up'} style={styles.loginButton} />
+      <TextPrimaryButton label={'Sign in'} style={styles.loginButton} />
     </Layout>
   );
 };

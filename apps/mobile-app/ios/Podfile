@@ -5,7 +5,7 @@ require_relative '../../../node_modules/@nrwl/react-native/nx_post_install'
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
-abstract_target 'MobileApp' do
+abstract_target 'App' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -40,7 +40,7 @@ abstract_target 'MobileApp' do
     # Beta specifics pods
   end
 
-  target 'MobileAppDevelop' do
+  target 'MobileAppDevelopment' do
     # Development specifics pods
   end
 
