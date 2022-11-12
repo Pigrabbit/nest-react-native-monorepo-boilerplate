@@ -1,3 +1,9 @@
+project.ext.envConfigFiles = [
+  prod: ".env.prod",
+  beta: ".env.beta",
+  dev: ".env.development",
+]
+
 apply plugin: "com.android.application"
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
@@ -240,6 +246,33 @@ android {
             // Detox-specific additions to pro-guard
             proguardFile "${rootProject.projectDir}/../node_modules/detox/android/detox/proguard-rules-app.pro"
             
+        }
+    }
+
+    flavorDimensions "environment"
+    productFlavors {
+        dev {
+            dimension "environment"
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "MobileApp dev"
+            resValue "string", "app_scheme", "minions-mobile-app-dev"
+            resValue "string", "app_link", ""
+            resValue "string", "CodePushDeploymentKey", ""
+        }
+        beta {
+            dimension "environment"
+            applicationIdSuffix ".beta"
+            resValue "string", "app_name", "MobileApp beta"
+            resValue "string", "app_scheme", "minions-mobile-app-beta"
+            resValue "string", "app_link", ""
+            resValue "string", "CodePushDeploymentKey", ""
+        }
+        prod {
+            dimension "environment"
+            resValue "string", "app_name", "MobileApp"
+            resValue "string", "app_scheme", "minions-mobile-app"
+            resValue "string", "app_link", ""
+            resValue "string", "CodePushDeploymentKey", ""
         }
     }
 

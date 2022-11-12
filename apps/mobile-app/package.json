@@ -5,8 +5,14 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "*",
     "@react-navigation/bottom-tabs": "*",
+    "@react-navigation/core": "*",
     "@react-navigation/native": "*",
     "@react-navigation/native-stack": "*",
+    "@storybook/addon-ondevice-actions": "*",
+    "@storybook/addon-ondevice-backgrounds": "*",
+    "@storybook/addon-ondevice-controls": "*",
+    "@storybook/addon-ondevice-notes": "*",
+    "@storybook/react-native": "*",
     "@testing-library/jest-native": "*",
     "@testing-library/react-native": "*",
     "metro-config": "*",
@@ -14,16 +20,13 @@
     "react-native": "*",
     "react-native-config": "*",
     "react-native-gesture-handler": "*",
+    "react-native-reanimated": "*",
     "react-native-safe-area-context": "*",
     "react-native-screens": "*",
     "react-native-svg": "*",
-    "react-native-reanimated": "*",
-    "@react-navigation/core": "*",
-    "@storybook/addon-ondevice-actions": "*",
-    "@storybook/addon-ondevice-backgrounds": "*",
-    "@storybook/addon-ondevice-controls": "*",
-    "@storybook/addon-ondevice-notes": "*",
-    "@storybook/react-native": "*"
+    "react-native-webview": "*",
+    "babel-plugin-module-resolver": "*",
+    "@storybook/addon-actions": "*"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "*"
