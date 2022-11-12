@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@minion/design-system": ["libs/design-system/src/index.ts"]
+      "@minion/design-system": ["libs/design-system/src/index.ts"],
+      "@nest-react-native-monorepo/data-interface": [
+        "libs/data-interface/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
