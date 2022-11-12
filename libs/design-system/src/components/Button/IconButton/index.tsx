@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 
-import { IconType } from '~/util/assets';
-
+import { IconType } from '../../../styles/assets';
 import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
 import { buttonStyle } from './styles';
 
@@ -19,15 +18,16 @@ const IconButton = ({ icon, disabled, style, ...props }: Props) => {
       {...props}
       style={[buttonStyle.default, style]}
       disabled={disabled}
-      onPressIn={e => {
+      onPressIn={(e) => {
         props.onPressIn?.(e);
         setIsPressed(true);
       }}
-      onPressOut={e => {
+      onPressOut={(e) => {
         props.onPressOut?.(e);
         setIsPressed(false);
       }}
     >
+      {/* @ts-expect-error svg prop */}
       {icon}
     </ButtonBase>
   );

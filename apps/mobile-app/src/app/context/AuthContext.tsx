@@ -2,9 +2,9 @@ import { createContext, Dispatch, ReactNode, useReducer } from 'react';
 
 export const USER_LOGIN = '@auth/user/login';
 export const USER_LOGOUT = '@auth/user/logout';
-export const SAVE_TOKEN_TO_STORAGE = '@auth/token/save';
+export const REFRESH_ACCESS_TOKEN = '@auth/token/refresh';
 export const RETRIEVE_TOKEN_FROM_STORAGE = '@auth/token/retrieve';
-export const REMOVE_TOKEN_FROM_STORAGE = '@auth/token/remove';
+export const REFRESH_TOKEN_EXPIRED = '@auth/refresh-token/expired';
 export const TOKEN_NOT_FOUND_IN_STORAGE = '@auth/token/not-found';
 
 interface UserLoginAction {
@@ -16,9 +16,9 @@ interface UserLogoutAction {
   type: typeof USER_LOGOUT;
 }
 
-interface SaveTokenToStorageAction {
-  type: typeof SAVE_TOKEN_TO_STORAGE;
-  payload: { accessToken: string; refreshToken: string };
+interface RefreshAccessToken {
+  type: typeof REFRESH_ACCESS_TOKEN;
+  payload: { accessToken: string };
 }
 
 interface RetrieveTokenFromStorageAction {
@@ -26,8 +26,8 @@ interface RetrieveTokenFromStorageAction {
   payload: { accessToken: string; refreshToken: string };
 }
 
-interface RemoveTokenFromStorageAction {
-  type: typeof REMOVE_TOKEN_FROM_STORAGE;
+interface RefreshTokenExpiredAction {
+  type: typeof REFRESH_TOKEN_EXPIRED;
 }
 
 interface TokenNotFoundInStorageAction {
@@ -37,9 +37,9 @@ interface TokenNotFoundInStorageAction {
 type AuthAction =
   | UserLoginAction
   | UserLogoutAction
-  | SaveTokenToStorageAction
+  | RefreshAccessToken
   | RetrieveTokenFromStorageAction
-  | RemoveTokenFromStorageAction
+  | RefreshTokenExpiredAction
   | TokenNotFoundInStorageAction;
 
 interface AuthState {
@@ -62,7 +62,11 @@ function authReducer(state = initialState, action: AuthAction): AuthState {
       return { ...action.payload };
     case RETRIEVE_TOKEN_FROM_STORAGE:
       return { ...action.payload };
+    case REFRESH_ACCESS_TOKEN:
+      return { ...state, accessToken: action.payload.accessToken };
     case USER_LOGOUT:
+      return { ...initialState };
+    case REFRESH_TOKEN_EXPIRED:
       return { ...initialState };
     default:
       return state;

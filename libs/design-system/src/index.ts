@@ -31,3 +31,4 @@ export { TypographyComponent as Typography };
 export { PopUpComponent as PopUp };
 
 export * from './styles/colors';
+export * from './styles/assets';

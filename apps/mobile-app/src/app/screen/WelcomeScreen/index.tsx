@@ -1,10 +1,5 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import {
-  Layout,
-  OutlinedButton,
-  TextPrimaryButton,
-  Typography,
-} from '@minion/design-system';
+import { Layout, OutlinedButton, Typography } from '@minion/design-system';
 import { useNavigation } from '@react-navigation/core';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
@@ -39,7 +34,6 @@ const WelcomeScreen = () => {
         }
       />
       <OutlinedButton label={'Sign up'} style={styles.loginButton} />
-      <TextPrimaryButton label={'Sign in'} style={styles.loginButton} />
     </Layout>
   );
 };
