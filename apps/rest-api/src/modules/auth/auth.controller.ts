@@ -1,6 +1,9 @@
+import { CreateTokenRequestDto } from '@nest-react-native-monorepo/data-interface';
 import {
+  Body,
   Controller,
   Get,
+  Post,
   Redirect,
   Req,
   UseFilters,
@@ -8,13 +11,21 @@ import {
 } from '@nestjs/common';
 import { User } from '../../decorators/user.decorator';
 import { OauthFilter } from '../../filters/oauth.filter';
-import { KakaoOauthGuard } from '../../guards/kakao-oauth.guard';
+import { KakaoOauthGuard } from '../../guards';
 import { UserEntity } from '../user/user.entity';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
+
+  @Post('token')
+  createTokens(
+    @Body()
+    dto: CreateTokenRequestDto
+  ) {
+    return this.authService.issueTokens(dto);
+  }
 
   @UseGuards(KakaoOauthGuard)
   @Get('login/kakao')
@@ -25,9 +36,8 @@ export class AuthController {
   @UseGuards(KakaoOauthGuard)
   @Redirect()
   @Get('login/kakao/redirect')
-  async kakaoOAuthRedirect(@User() user: UserEntity) {
+  kakaoOAuthRedirect(@User() user: UserEntity) {
     const params = this.authService.getSearchParam(user);
-
     return { url: `success?${params.toString()}` };
   }
 
