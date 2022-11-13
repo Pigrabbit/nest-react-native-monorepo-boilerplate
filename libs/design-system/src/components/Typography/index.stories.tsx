@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { text, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 
 import Typography from '.';
 
@@ -23,7 +22,7 @@ storiesOf('Typography', module).add('default', () => (
         description: 'description',
         caption: 'caption',
       },
-      'body',
+      'body'
     )}
     fontWeight={select(
       'fontWeight',
@@ -31,7 +30,7 @@ storiesOf('Typography', module).add('default', () => (
         regular: 'regular',
         bold: 'bold',
       },
-      'regular',
+      'regular'
     )}
   >
     {text('text', '안녕하세요 고유입니다')}

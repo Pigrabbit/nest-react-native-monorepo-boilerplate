@@ -1,9 +1,10 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Image } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { PersonIcon, HomeIcon } from '../assets';
 import HomeScreen from '../screen/HomeScreen';
 import MyPageScreen from '../screen/MyPageScreen';
-import { PersonIcon, HomeIcon } from '../assets';
 
 export type BottomTabParamList = {
   HomeScreen: undefined;
@@ -21,9 +22,7 @@ const MainTabNavigator = () => {
         options={{
           headerShown: false,
           tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => (
-            <HomeIcon width={30} height={30} fill={color} />
-          ),
+          tabBarIcon: ({ color }) => <HomeIcon width={30} height={30} fill={color} />,
         }}
       />
       <BottomTab.Screen
@@ -32,9 +31,7 @@ const MainTabNavigator = () => {
         options={{
           headerShown: false,
           tabBarLabel: 'MyPage',
-          tabBarIcon: ({ color }) => (
-            <Image source={PersonIcon} style={{ tintColor: color }} />
-          ),
+          tabBarIcon: ({ color }) => <Image source={PersonIcon} style={{ tintColor: color }} />,
         }}
       />
     </BottomTab.Navigator>

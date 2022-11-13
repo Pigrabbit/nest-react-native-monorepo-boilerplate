@@ -1,15 +1,14 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import Dropdown from '.';
 import { DropdownContextProvider } from './DropdownContext';
 import { DropdownOptionsBottomSheet } from './DropdownOptionsBottomSheet';
 
 storiesOf('Dropdown', module)
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <NavigationContainer>
       <DropdownContextProvider>
         <View style={styles.wrapper}>{getStory()}</View>

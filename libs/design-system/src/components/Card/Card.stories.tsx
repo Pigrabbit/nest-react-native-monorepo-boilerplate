@@ -1,16 +1,14 @@
+import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { storiesOf } from '@storybook/react-native';
-
-import { Colors } from '../../styles/colors';
-
 import Card from '.';
+import { Colors } from '../../styles/colors';
 import CheckBox from '../CheckBox';
 import Typography from '../Typography';
 
 storiesOf('Card', module)
-  .addDecorator(getStory => <View style={styles.wrapper}>{getStory()}</View>)
+  .addDecorator((getStory) => <View style={styles.wrapper}>{getStory()}</View>)
   .add('default', () => (
     <Card>
       <Typography>카드 컴포넌트</Typography>

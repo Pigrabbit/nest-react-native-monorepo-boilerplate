@@ -1,17 +1,16 @@
-import React from 'react';
-
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react-native';
-
-import usePopUp from '~/hook/usePopup';
+import React from 'react';
 
 import PopUp from '.';
 import PrimaryButton from '../Button/PrimaryButton';
 import { PopUpContextProvider } from './PopUpContext';
 
+import usePopUp from '~/hook/usePopup';
+
 storiesOf('PopUp', module)
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <PopUpContextProvider>
       <PopUp />
       {getStory()}

@@ -1,14 +1,8 @@
+import { ButtonBase, Typography, ButtonBaseProps, Colors } from '@minion/design-system';
 import React, { useState } from 'react';
 import { StyleProp, ViewStyle, View, StyleSheet } from 'react-native';
 
 import { AppleIcon } from '../../assets';
-
-import {
-  ButtonBase,
-  Typography,
-  ButtonBaseProps,
-  Colors,
-} from '@minion/design-system';
 
 interface Props extends ButtonBaseProps {
   label: string | JSX.Element;
@@ -34,11 +28,7 @@ const AppleButton = ({ label, disabled, style, ...props }: Props) => {
     >
       <View style={buttonStyle.labelWithIcon}>
         <AppleIcon width="24" height="24" />
-        <Typography
-          variant="subtitle"
-          fontWeight="bold"
-          style={labelStyle.default}
-        >
+        <Typography variant="subtitle" fontWeight="bold" style={labelStyle.default}>
           {label}
         </Typography>
       </View>

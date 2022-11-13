@@ -1,15 +1,9 @@
+import { useFocusEffect } from '@react-navigation/core';
 import React, { useCallback } from 'react';
 import { StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
 
-import { useFocusEffect } from '@react-navigation/core';
-
 import { useDropdown } from '../../hooks/useDropdown';
-import {
-  ArrowDownBlackIcon,
-  ArrowDownGrayIcon,
-  ArrowUpBlackIcon,
-} from '../../styles/assets';
-
+import { ArrowDownBlackIcon, ArrowDownGrayIcon, ArrowUpBlackIcon } from '../../styles/assets';
 import Typography from '../Typography';
 import { Option } from './DropdownContext';
 import styles from './styles';
@@ -28,12 +22,7 @@ const Dropdown = ({ options, name: key, disabled, style }: Props) => {
    * 스크린의 하위 요소인 드롭다운 버튼과
    * 전역 바텀시트 형태인 옵션 목록이 같은 값(selectedOption)을 참조하기 때문
    */
-  const {
-    getSelectedOption,
-    showDropdown,
-    initializeDropdown,
-    focusedDropdownKey,
-  } = useDropdown();
+  const { getSelectedOption, showDropdown, initializeDropdown, focusedDropdownKey } = useDropdown();
 
   useFocusEffect(
     useCallback(() => {
@@ -71,11 +60,7 @@ const Dropdown = ({ options, name: key, disabled, style }: Props) => {
       }}
     >
       <View style={styles.dropdown}>
-        <Typography
-          variant="description"
-          fontWeight="bold"
-          style={disabled ? styles.textDisabled : {}}
-        >
+        <Typography variant="description" fontWeight="bold" style={disabled ? styles.textDisabled : {}}>
           {getSelectedOption(key)?.label || options[0].label}
         </Typography>
         {renderDropdownArrow()}

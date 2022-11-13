@@ -1,13 +1,12 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-
 import { text } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import { Table, Row } from '.';
 
 storiesOf('Table', module)
-  .addDecorator(getStory => <View style={styles.wrapper}>{getStory()}</View>)
+  .addDecorator((getStory) => <View style={styles.wrapper}>{getStory()}</View>)
   .add('default', () => (
     <Table>
       <Row header={text('헤더', '매장')} data={text('데이터', '서울대점')} />

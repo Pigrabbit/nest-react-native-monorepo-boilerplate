@@ -1,16 +1,16 @@
 import BadgeComponent from './components/Badge';
-import LayoutComponent from './components/Layout';
 import CardComponent from './components/Card';
 import CheckBoxComponent from './components/CheckBox';
 import DropDownComponent from './components/Dropdown';
 import HeaderComponent from './components/Header';
 import IndicatorComponent from './components/Indicator';
 import InputComponent from './components/Input';
+import LayoutComponent from './components/Layout';
+import PopUpComponent from './components/PopUp';
 import RadioComponent from './components/Radio';
 import ToastComponent from './components/Toast';
 import ToggleComponent from './components/Toggle';
 import TypographyComponent from './components/Typography';
-import PopUpComponent from './components/PopUp';
 
 export { BadgeComponent as Badge };
 export * from './components/Button';

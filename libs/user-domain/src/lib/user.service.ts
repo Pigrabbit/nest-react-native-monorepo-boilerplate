@@ -1,10 +1,7 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+
 import { OAuthMethod, UserEntity } from './user.entity';
 
 @Injectable()
@@ -23,10 +20,7 @@ export class UserService {
     });
   }
 
-  findByOAuthId(
-    oAuthMethod: OAuthMethod,
-    oAuthId: string
-  ): Promise<UserEntity> {
+  findByOAuthId(oAuthMethod: OAuthMethod, oAuthId: string): Promise<UserEntity> {
     return this.userRepository.findOne({
       where: {
         oAuthMethod,

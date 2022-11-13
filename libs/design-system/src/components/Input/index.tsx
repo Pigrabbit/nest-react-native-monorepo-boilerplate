@@ -11,13 +11,7 @@ import {
 } from 'react-native';
 
 import { Colors } from '../../styles/colors';
-
-import {
-  wrapperStyles,
-  textInputStyles,
-  subDescStyles,
-  suffixStyles,
-} from './styles';
+import { wrapperStyles, textInputStyles, subDescStyles, suffixStyles } from './styles';
 
 interface Props extends TextInputProps {
   placeholder?: string;
@@ -31,10 +25,7 @@ interface Props extends TextInputProps {
 }
 
 const Input = forwardRef<TextInput, Props>(
-  (
-    { subDesc, isError, disabled, inputStyle, suffixStyle, suffix, ...props },
-    ref,
-  ) => {
+  ({ subDesc, isError, disabled, inputStyle, suffixStyle, suffix, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState(false);
 
     const getTextInputStyle = (): TextStyle | undefined => {
@@ -63,11 +54,7 @@ const Input = forwardRef<TextInput, Props>(
         <View style={wrapperStyles.inputWrapper}>
           <TextInput
             ref={ref}
-            style={StyleSheet.flatten([
-              textInputStyles.primary,
-              getTextInputStyle(),
-              inputStyle,
-            ])}
+            style={StyleSheet.flatten([textInputStyles.primary, getTextInputStyle(), inputStyle])}
             {...props}
             onFocus={handleFocus}
             onBlur={handleBlur}
@@ -76,25 +63,14 @@ const Input = forwardRef<TextInput, Props>(
             editable={!disabled}
             placeholderTextColor={Colors.GRAY40}
           />
-          {Boolean(suffix) && (
-            <Text
-              style={StyleSheet.flatten([suffixStyles.primary, suffixStyle])}>
-              {suffix}
-            </Text>
-          )}
+          {Boolean(suffix) && <Text style={StyleSheet.flatten([suffixStyles.primary, suffixStyle])}>{suffix}</Text>}
         </View>
         {Boolean(subDesc) && (
-          <Text
-            style={StyleSheet.flatten([
-              subDescStyles.primary,
-              getSubDescStyle(),
-            ])}>
-            {subDesc}
-          </Text>
+          <Text style={StyleSheet.flatten([subDescStyles.primary, getSubDescStyle()])}>{subDesc}</Text>
         )}
       </View>
     );
-  },
+  }
 );
 
 export default Input;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 
 import Typography from '../../Typography';
-
 import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
 import { buttonStyle, labelStyle } from './style';
 
@@ -12,13 +11,7 @@ interface Props extends ButtonBaseProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const OutlinedButton = ({
-  label,
-  disabled,
-  size = 'large',
-  style,
-  ...props
-}: Props) => {
+const OutlinedButton = ({ label, disabled, size = 'large', style, ...props }: Props) => {
   const [isPressed, setIsPressed] = useState(false);
 
   const isLarge = size === 'large';

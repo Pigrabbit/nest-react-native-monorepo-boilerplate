@@ -1,16 +1,11 @@
+import BottomSheet, { BottomSheetBackdrop, BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-import BottomSheet, {
-  BottomSheetBackdrop,
-  BottomSheetFlatList,
-} from '@gorhom/bottom-sheet';
-
 import { useDropdown } from '../../hooks/useDropdown';
-import { WINDOW_HEIGHT } from '../../styles/dimension';
 import { CheckOrangeIcon } from '../../styles/assets';
 import { Colors } from '../../styles/colors';
-
+import { WINDOW_HEIGHT } from '../../styles/dimension';
 import Typography from '../Typography';
 import { Option } from './DropdownContext';
 
@@ -28,8 +23,7 @@ export const DropdownOptionsBottomSheet = () => {
 
   const bottomSheetRef = useRef<BottomSheet>(null);
 
-  const bottomSheetHeightTotal =
-    BOTTOM_SHEET_DEFAULT_HEIGHT + OPTION_HEIGHT * (items || []).length;
+  const bottomSheetHeightTotal = BOTTOM_SHEET_DEFAULT_HEIGHT + OPTION_HEIGHT * (items || []).length;
 
   const handlePressOption = (item: Option) => {
     selectDropdownOption({
@@ -41,20 +35,14 @@ export const DropdownOptionsBottomSheet = () => {
 
   useEffect(
     () =>
-      (focusedDropdownKey || '').length
-        ? bottomSheetRef.current?.snapToIndex(0)
-        : bottomSheetRef.current?.close(),
+      (focusedDropdownKey || '').length ? bottomSheetRef.current?.snapToIndex(0) : bottomSheetRef.current?.close(),
     [focusedDropdownKey]
   );
 
   return (
     <BottomSheet
       ref={bottomSheetRef}
-      snapPoints={[
-        bottomSheetHeightTotal > WINDOW_HEIGHT / 2
-          ? bottomSheetHeightTotal - 44
-          : bottomSheetHeightTotal,
-      ]}
+      snapPoints={[bottomSheetHeightTotal > WINDOW_HEIGHT / 2 ? bottomSheetHeightTotal - 44 : bottomSheetHeightTotal]}
       onClose={hideDropdown}
       index={-1}
       handleIndicatorStyle={styles.handleIndicator}
@@ -75,9 +63,7 @@ export const DropdownOptionsBottomSheet = () => {
           <OptionItem
             item={item}
             handlePress={() => handlePressOption(item)}
-            isSelected={
-              getSelectedOption(focusedDropdownKey)?.value === item.value
-            }
+            isSelected={getSelectedOption(focusedDropdownKey)?.value === item.value}
           />
         )}
       />
@@ -94,12 +80,7 @@ const OptionItem = ({
   handlePress: () => void;
   isSelected: boolean;
 }) => (
-  <TouchableOpacity
-    activeOpacity={0.8}
-    key={item.label}
-    onPress={handlePress}
-    style={styles.option}
-  >
+  <TouchableOpacity activeOpacity={0.8} key={item.label} onPress={handlePress} style={styles.option}>
     <Typography>{item.label}</Typography>
     {isSelected && <CheckOrangeIcon />}
   </TouchableOpacity>

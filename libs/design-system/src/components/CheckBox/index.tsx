@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  Pressable,
-  PressableProps,
-  StyleProp,
-  View,
-  ViewStyle,
-} from 'react-native';
-import { CheckIcon } from '../../styles/assets';
+import { Pressable, PressableProps, StyleProp, View, ViewStyle } from 'react-native';
 
+import { CheckIcon } from '../../styles/assets';
 import Typography from '../Typography';
 import { checkBoxStyles, containerStyles, labelStyles } from './styles';
 
@@ -18,20 +12,9 @@ interface Props extends PressableProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const CheckBox = ({
-  isChecked,
-  label,
-  disabled,
-  onPress,
-  style,
-  ...props
-}: Props) => {
+const CheckBox = ({ isChecked, label, disabled, onPress, style, ...props }: Props) => {
   return (
-    <Pressable
-      {...props}
-      style={[containerStyles.container, style]}
-      onPress={(event) => onPress?.(event)}
-    >
+    <Pressable {...props} style={[containerStyles.container, style]} onPress={(event) => onPress?.(event)}>
       <View
         style={[
           checkBoxStyles.default,
@@ -41,10 +24,7 @@ const CheckBox = ({
       >
         {isChecked && <CheckIcon />}
       </View>
-      <Typography
-        style={[labelStyles.default, disabled ? labelStyles.disabled : {}]}
-        variant="body"
-      >
+      <Typography style={[labelStyles.default, disabled ? labelStyles.disabled : {}]} variant="body">
         {label}
       </Typography>
     </Pressable>

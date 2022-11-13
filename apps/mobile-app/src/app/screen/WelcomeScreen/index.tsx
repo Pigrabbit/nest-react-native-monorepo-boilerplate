@@ -4,14 +4,12 @@ import { useNavigation } from '@react-navigation/core';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+
 import { RootStackParamList } from '../../navigator/RootStackNavigator';
 import AppleButton from './AppleButton';
 import KakaoButton from './KakaoButton';
 
-type ScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'WelcomeScreen'
->;
+type ScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'WelcomeScreen'>;
 
 const WelcomeScreen = () => {
   const navigation = useNavigation<ScreenNavigationProp>();
@@ -22,16 +20,12 @@ const WelcomeScreen = () => {
       <KakaoButton
         label="Sign in with Kakao"
         style={styles.loginButton}
-        onPress={() =>
-          navigation.navigate('OAuthLoginScreen', { oAuthMethod: 'kakao' })
-        }
+        onPress={() => navigation.navigate('OAuthLoginScreen', { oAuthMethod: 'kakao' })}
       />
       <AppleButton
         label="Sign in with Apple"
         style={styles.loginButton}
-        onPress={() =>
-          navigation.navigate('OAuthLoginScreen', { oAuthMethod: 'apple' })
-        }
+        onPress={() => navigation.navigate('OAuthLoginScreen', { oAuthMethod: 'apple' })}
       />
       <OutlinedButton label={'Sign up'} style={styles.loginButton} />
     </Layout>

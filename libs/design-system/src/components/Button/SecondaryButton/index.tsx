@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 
 import Typography from '../../Typography';
-
 import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
 import { buttonStyle, labelStyle } from './style';
 
@@ -24,20 +23,16 @@ const SecondaryButton = ({ label, disabled, style, ...props }: Props) => {
         style,
       ]}
       disabled={disabled}
-      onPressIn={e => {
+      onPressIn={(e) => {
         props.onPressIn?.(e);
         setIsPressed(true);
       }}
-      onPressOut={e => {
+      onPressOut={(e) => {
         props.onPressOut?.(e);
         setIsPressed(false);
       }}
     >
-      <Typography
-        variant="subtitle"
-        fontWeight="bold"
-        style={disabled ? labelStyle.disabled : labelStyle.enabled}
-      >
+      <Typography variant="subtitle" fontWeight="bold" style={disabled ? labelStyle.disabled : labelStyle.enabled}>
         {label}
       </Typography>
     </ButtonBase>

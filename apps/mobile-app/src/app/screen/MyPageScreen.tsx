@@ -1,7 +1,7 @@
+import { Layout, TextSecondaryButton, Typography } from '@minion/design-system';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import { Layout, TextSecondaryButton, Typography } from '@minion/design-system';
 import { useAuth } from '../hook/useAuth';
 
 const MyPageScreen = () => {

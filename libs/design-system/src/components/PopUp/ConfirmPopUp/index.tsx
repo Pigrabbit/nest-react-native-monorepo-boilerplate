@@ -1,7 +1,6 @@
 import React from 'react';
 
 import usePopUp from '../../../hooks/usePopup';
-
 import OutlinedButton from '../../Button/OutlinedButton';
 import SecondaryButton from '../../Button/SecondaryButton';
 import Typography from '../../Typography';
@@ -29,19 +28,13 @@ const ConfirmPopUp = ({
 
   const renderTitle = () =>
     title.length > 0 ? (
-      <Typography
-        style={textContentStyles.title}
-        variant="subtitle"
-        fontWeight="bold"
-      >
+      <Typography style={textContentStyles.title} variant="subtitle" fontWeight="bold">
         {title}
       </Typography>
     ) : null;
 
   const renderContents = () =>
-    subDesc.length > 0 ? (
-      <Typography style={textContentStyles.subDesc}>{subDesc}</Typography>
-    ) : null;
+    subDesc.length > 0 ? <Typography style={textContentStyles.subDesc}>{subDesc}</Typography> : null;
 
   const renderButtons = () => [
     <OutlinedButton

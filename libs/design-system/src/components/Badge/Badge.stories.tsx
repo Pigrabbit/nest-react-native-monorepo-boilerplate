@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { text, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 
 import Badge from '.';
 
@@ -17,7 +16,7 @@ storiesOf('Badge', module)
           green: 'green',
           gray: 'gray',
         },
-        'green',
+        'green'
       )}
     />
   ))

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import { Layout, Typography } from '@minion/design-system';
+import React, { useEffect, useState } from 'react';
+
 import { getMe } from '../api/user';
 
 const HomeScreen = () => {

@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react';
 import { Alert } from 'react-native';
 import * as Keychain from 'react-native-keychain';
-import { issueToken } from '../api/auth';
 
+import { issueToken } from '../api/auth';
 import {
   AuthContext,
   REFRESH_ACCESS_TOKEN,
@@ -28,10 +28,7 @@ export function useAuth() {
     });
   }, []);
 
-  const login = (tokens: {
-    accessToken: string;
-    refreshToken: string;
-  }): void => {
+  const login = (tokens: { accessToken: string; refreshToken: string }): void => {
     Keychain.setGenericPassword('mobile-app-user', JSON.stringify(tokens));
     dispatch({ type: USER_LOGIN, payload: tokens });
   };
@@ -45,18 +42,13 @@ export function useAuth() {
     Keychain.resetGenericPassword();
     dispatch({ type: REFRESH_TOKEN_EXPIRED });
 
-    Alert.alert('', 'Please login again', [
-      { text: 'cancel', onPress: () => null },
-    ]);
+    Alert.alert('', 'Please login again', [{ text: 'cancel', onPress: () => null }]);
   };
 
   const refreshAccessToken = async (): Promise<string> => {
     const token = await issueToken(state.refreshToken);
 
-    Keychain.setGenericPassword(
-      'mobile-app-user',
-      JSON.stringify({ ...state, accessToken: token.access_token })
-    );
+    Keychain.setGenericPassword('mobile-app-user', JSON.stringify({ ...state, accessToken: token.access_token }));
     dispatch({
       type: REFRESH_ACCESS_TOKEN,
       payload: { accessToken: token.access_token },

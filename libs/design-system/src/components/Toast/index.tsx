@@ -3,7 +3,6 @@ import { Animated } from 'react-native';
 
 import useToast from '../../hooks/useToast';
 import { CheckGreenIcon } from '../../styles/assets';
-
 import Typography from '../Typography';
 import { toastStyles } from './styles';
 
@@ -33,11 +32,7 @@ const Toast = () => {
   });
 
   const showAndDismiss = () => {
-    Animated.sequence([
-      fadeInAnimation,
-      Animated.delay(duration),
-      fadeOutAnimation,
-    ]).start(() => dismiss());
+    Animated.sequence([fadeInAnimation, Animated.delay(duration), fadeOutAnimation]).start(() => dismiss());
   };
 
   useEffect(() => {
@@ -47,16 +42,9 @@ const Toast = () => {
   }, [isVisible]);
 
   return (
-    <Animated.View
-      style={[toastStyles.container, { opacity, transform: [{ translateY }] }]}
-      pointerEvents="none"
-    >
+    <Animated.View style={[toastStyles.container, { opacity, transform: [{ translateY }] }]} pointerEvents="none">
       <CheckGreenIcon width="24" height="24" />
-      <Typography
-        style={toastStyles.message}
-        numberOfLines={1}
-        ellipsizeMode="tail"
-      >
+      <Typography style={toastStyles.message} numberOfLines={1} ellipsizeMode="tail">
         {message}
       </Typography>
     </Animated.View>

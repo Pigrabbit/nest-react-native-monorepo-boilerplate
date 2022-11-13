@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import Typography from '../../Typography';
-
 import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
 import { labelStyle } from './style';
 
@@ -10,12 +9,7 @@ interface Props extends ButtonBaseProps {
   size?: 'large' | 'small';
 }
 
-const TextSecondaryButton = ({
-  label,
-  disabled,
-  size = 'large',
-  ...props
-}: Props) => {
+const TextSecondaryButton = ({ label, disabled, size = 'large', ...props }: Props) => {
   const [isPressed, setIsPressed] = useState(false);
 
   const isLarge = size === 'large';
@@ -24,11 +18,11 @@ const TextSecondaryButton = ({
     <ButtonBase
       {...props}
       disabled={disabled}
-      onPressIn={e => {
+      onPressIn={(e) => {
         props.onPressIn?.(e);
         setIsPressed(true);
       }}
-      onPressOut={e => {
+      onPressOut={(e) => {
         props.onPressOut?.(e);
         setIsPressed(false);
       }}
@@ -36,11 +30,7 @@ const TextSecondaryButton = ({
       <Typography
         variant={isLarge ? 'subtitle' : 'description'}
         fontWeight="bold"
-        style={[
-          labelStyle.normal,
-          disabled ? labelStyle.disabled : {},
-          isPressed ? labelStyle.pressed : {},
-        ]}
+        style={[labelStyle.normal, disabled ? labelStyle.disabled : {}, isPressed ? labelStyle.pressed : {}]}
       >
         {label}
       </Typography>

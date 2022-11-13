@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-import HomeIconSvg from '../../assets/icons/ic-home.svg';
 import AppleIconSvg from '../../assets/icons/ic-apple.svg';
+import HomeIconSvg from '../../assets/icons/ic-home.svg';
 import KakaoIconSvg from '../../assets/icons/ic-kakao.svg';
 
 export { HomeIconSvg as HomeIcon };

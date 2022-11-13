@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import Config from '../config';
 
 const axiosInstance = axios.create({

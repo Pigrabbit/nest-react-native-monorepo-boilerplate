@@ -1,14 +1,14 @@
-import { useEffect, useMemo, useState } from 'react';
-import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-
-import { useAuth } from './useAuth';
-import axiosInstance from '../util/axios';
 import {
   ExpiredAccessTokenException,
   ExpiredRefreshTokenException,
   InvalidRefreshTokenException,
 } from '@nest-react-native-monorepo/data-interface';
 import { HttpException } from '@nestjs/common';
+import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import { useEffect, useMemo, useState } from 'react';
+
+import axiosInstance from '../util/axios';
+import { useAuth } from './useAuth';
 
 const MAX_RETRY = 3;
 
@@ -18,14 +18,8 @@ interface ErrorResponseData {
   statusCode: number;
 }
 
-const isExceptionMatched = <T extends HttpException>(
-  err: ErrorResponseData,
-  exception: T
-): boolean => {
-  return (
-    err.statusCode === exception.getStatus() &&
-    err.message === exception.message
-  );
+const isExceptionMatched = <T extends HttpException>(err: ErrorResponseData, exception: T): boolean => {
+  return err.statusCode === exception.getStatus() && err.message === exception.message;
 };
 
 export function useInterceptor() {
@@ -34,9 +28,7 @@ export function useInterceptor() {
 
   const interceptors = useMemo(() => {
     const request = (config: AxiosRequestConfig): AxiosRequestConfig => {
-      config.headers['Authorization'] = accessToken
-        ? `Bearer ${accessToken}`
-        : '';
+      config.headers['Authorization'] = accessToken ? `Bearer ${accessToken}` : '';
       return config;
     };
 
@@ -45,14 +37,8 @@ export function useInterceptor() {
     };
 
     const error = async (err: AxiosError<ErrorResponseData>) => {
-      const invalidRefreshTokenError = isExceptionMatched(
-        err.response?.data,
-        new InvalidRefreshTokenException()
-      );
-      const expiredRefreshTokenError = isExceptionMatched(
-        err.response?.data,
-        new ExpiredRefreshTokenException()
-      );
+      const invalidRefreshTokenError = isExceptionMatched(err.response?.data, new InvalidRefreshTokenException());
+      const expiredRefreshTokenError = isExceptionMatched(err.response?.data, new ExpiredRefreshTokenException());
 
       if (invalidRefreshTokenError || expiredRefreshTokenError) {
         console.error('Refresh token expired or invalid');
@@ -60,10 +46,7 @@ export function useInterceptor() {
         return;
       }
 
-      const accessTokenExpiredError = isExceptionMatched(
-        err.response?.data,
-        new ExpiredAccessTokenException()
-      );
+      const accessTokenExpiredError = isExceptionMatched(err.response?.data, new ExpiredAccessTokenException());
 
       if (accessTokenExpiredError && retryCount < MAX_RETRY) {
         console.error('Access token expired');
@@ -83,15 +66,9 @@ export function useInterceptor() {
   }, [accessToken, retryCount]);
 
   useEffect(() => {
-    const requestInterceptor = axiosInstance.interceptors.request.use(
-      interceptors.request,
-      interceptors.error
-    );
+    const requestInterceptor = axiosInstance.interceptors.request.use(interceptors.request, interceptors.error);
 
-    const responseInterceptor = axiosInstance.interceptors.response.use(
-      interceptors.response,
-      interceptors.error
-    );
+    const responseInterceptor = axiosInstance.interceptors.response.use(interceptors.response, interceptors.error);
 
     return () => {
       axiosInstance.interceptors.request.eject(requestInterceptor);

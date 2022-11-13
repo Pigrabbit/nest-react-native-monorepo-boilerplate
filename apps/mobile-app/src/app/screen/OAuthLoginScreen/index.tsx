@@ -1,20 +1,16 @@
+import { Colors } from '@minion/design-system';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import { Alert, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { Colors } from '@minion/design-system';
-
-import { RootStackParamList } from '../../navigator/RootStackNavigator';
 import Config from '../../config';
 import { useAuth } from '../../hook/useAuth';
+import { RootStackParamList } from '../../navigator/RootStackNavigator';
 
-type ScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'OAuthLoginScreen'
->;
+type ScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'OAuthLoginScreen'>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'OAuthLoginScreen'>;
 
 function OAuthLoginScreen() {
@@ -62,9 +58,7 @@ function OAuthLoginScreen() {
   };
 
   const handleError = () =>
-    Alert.alert('', 'Something went wrong\nTry it again', [
-      { text: 'OK', onPress: () => navigation.goBack() },
-    ]);
+    Alert.alert('', 'Something went wrong\nTry it again', [{ text: 'OK', onPress: () => navigation.goBack() }]);
 
   return (
     <WebView

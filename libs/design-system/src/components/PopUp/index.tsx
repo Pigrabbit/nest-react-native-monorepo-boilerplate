@@ -2,7 +2,6 @@ import React, { PropsWithChildren } from 'react';
 import { Modal, StyleSheet, View } from 'react-native';
 
 import usePopUp from '../../hooks/usePopup';
-
 import AlertPopUp from './AlertPopUp';
 import ConfirmPopUp from './ConfirmPopUp';
 
@@ -24,10 +23,7 @@ const PopUp = () => {
   return <Backdrop visible={isShown}>{getPopUp()}</Backdrop>;
 };
 
-const Backdrop = ({
-  children,
-  visible,
-}: PropsWithChildren<{ visible: boolean }>) => (
+const Backdrop = ({ children, visible }: PropsWithChildren<{ visible: boolean }>) => (
   <Modal visible={visible} transparent={true}>
     <View style={styles.backdrop}>{children}</View>
   </Modal>

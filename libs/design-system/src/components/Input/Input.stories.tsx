@@ -1,13 +1,12 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-
 import { text, boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import Input from './Input';
 
 storiesOf('Input', module)
-  .addDecorator(getStory => <View style={styles.wrapper}>{getStory()}</View>)
+  .addDecorator((getStory) => <View style={styles.wrapper}>{getStory()}</View>)
   .add('default', () => (
     <Input
       value={text('input value', '')}
@@ -26,12 +25,7 @@ storiesOf('Input', module)
     />
   ))
   .add('disabled', () => (
-    <Input
-      placeholder="placeholder"
-      value="비활성화 처리된 input입니다"
-      subDesc="sub description"
-      disabled={true}
-    />
+    <Input placeholder="placeholder" value="비활성화 처리된 input입니다" subDesc="sub description" disabled={true} />
   ))
   .add('error', () => (
     <Input
