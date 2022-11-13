@@ -1,8 +1,7 @@
-import { AccessTokenPayload } from '@nest-react-native-monorepo/data-interface';
+import { AccessTokenPayload, UserFromToken } from '@nest-react-native-monorepo/data-interface';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
-import { UserFromToken } from '../../../interfaces';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 @Injectable()

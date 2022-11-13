@@ -4,16 +4,11 @@ import {
   InvalidAccessTokenException,
   MissingAccessTokenException,
 } from '@nest-react-native-monorepo/data-interface';
-import {
-  CanActivate,
-  ExecutionContext,
-  Inject,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ExtractJwt } from 'passport-jwt';
-import { AuthService } from '../modules/auth/auth.service';
+
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') implements CanActivate {
@@ -30,8 +25,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') implements CanActivate {
         throw new MissingAccessTokenException();
       }
 
-      const decodedAccessToken =
-        await this.authService.validateToken<AccessTokenPayload>(accessToken);
+      const decodedAccessToken = await this.authService.validateToken<AccessTokenPayload>(accessToken);
       if (!decodedAccessToken) {
         throw new InvalidAccessTokenException();
       }

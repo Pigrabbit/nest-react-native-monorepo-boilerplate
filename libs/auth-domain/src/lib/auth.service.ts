@@ -5,30 +5,18 @@ import {
   ExpiredRefreshTokenException,
   InvalidRefreshTokenException,
   RefreshTokenPayload,
+  UserFromToken,
 } from '@nest-react-native-monorepo/data-interface';
-import {
-  UserService,
-  OAuthMethod,
-} from '@nest-react-native-monorepo/user-domain';
+import { UserService, OAuthMethod } from '@nest-react-native-monorepo/user-domain';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { hoursToSeconds, minutesToSeconds } from 'date-fns';
-import { UserFromToken } from '../../interfaces';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private readonly userService: UserService,
-    private jwtService: JwtService
-  ) {}
+  constructor(private readonly userService: UserService, private jwtService: JwtService) {}
 
-  async validateOAuthUser({
-    oAuthMethod,
-    oAuthId,
-  }: {
-    oAuthMethod: OAuthMethod;
-    oAuthId: string;
-  }) {
+  async validateOAuthUser({ oAuthMethod, oAuthId }: { oAuthMethod: OAuthMethod; oAuthId: string }) {
     const user = await this.userService.findByOAuthId(oAuthMethod, oAuthId);
     return user;
   }
@@ -46,10 +34,7 @@ export class AuthService {
     return params;
   }
 
-  issueTokens({
-    grantType,
-    refreshToken,
-  }: CreateTokenRequestDto): Promise<CreateTokenResponseDto> {
+  issueTokens({ grantType, refreshToken }: CreateTokenRequestDto): Promise<CreateTokenResponseDto> {
     if (grantType === 'client_credentials' || grantType === 'password') {
       throw new BadRequestException('Unsupported grant type');
     }
@@ -57,13 +42,9 @@ export class AuthService {
     return this.refreshAccessToken(refreshToken);
   }
 
-  async refreshAccessToken(
-    refreshToken: string
-  ): Promise<CreateTokenResponseDto> {
+  async refreshAccessToken(refreshToken: string): Promise<CreateTokenResponseDto> {
     try {
-      const decodedRefreshToken = await this.validateToken<RefreshTokenPayload>(
-        refreshToken
-      );
+      const decodedRefreshToken = await this.validateToken<RefreshTokenPayload>(refreshToken);
 
       if (!decodedRefreshToken) {
         throw new InvalidRefreshTokenException();
