@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
 import { AuthService } from './auth.service';
-import { JwtStrategy, KakaoStrategy } from './strategy';
+import { AppleStrategy, JwtStrategy, KakaoStrategy } from './strategy';
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { JwtStrategy, KakaoStrategy } from './strategy';
     }),
     UserDomainModule,
   ],
-  providers: [AuthService, JwtStrategy, KakaoStrategy],
+  providers: [AuthService, JwtStrategy, AppleStrategy, KakaoStrategy],
   exports: [AuthService],
 })
 export class AuthDomainModule {}

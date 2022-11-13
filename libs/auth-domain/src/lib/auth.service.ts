@@ -86,4 +86,8 @@ export class AuthService {
   validateToken<T extends object>(token: string): Promise<undefined | T> {
     return this.jwtService.verifyAsync<T>(token);
   }
+
+  decodeToken(token: string) {
+    return this.jwtService.decode(token);
+  }
 }

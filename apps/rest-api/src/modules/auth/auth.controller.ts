@@ -1,4 +1,4 @@
-import { AuthService, KakaoOauthGuard } from '@nest-react-native-monorepo/auth-domain';
+import { AppleOauthGuard, AuthService, KakaoOauthGuard } from '@nest-react-native-monorepo/auth-domain';
 import { CreateTokenRequestDto, UserFromToken } from '@nest-react-native-monorepo/data-interface';
 import { Body, Controller, Get, Post, Redirect, Req, UseFilters, UseGuards } from '@nestjs/common';
 
@@ -32,7 +32,26 @@ export class AuthController {
   }
 
   @Get('login/kakao/fail')
-  kakaoSignUpRedirect() {
+  kakaoSignUpFailRedirect() {
+    return {};
+  }
+
+  @UseGuards(AppleOauthGuard)
+  @Get('login/apple')
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  async appleOAuth() {}
+
+  @UseFilters(OauthFilter)
+  @UseGuards(AppleOauthGuard)
+  @Redirect()
+  @Post('login/apple/redirect')
+  async appleOAuthRedirect(@User() user: UserFromToken) {
+    const params = this.authService.getSearchParam(user);
+    return { url: `success?${params.toString()}` };
+  }
+
+  @Get('login/apple/fail')
+  appleSignUpFailRedirect() {
     return {};
   }
 }
