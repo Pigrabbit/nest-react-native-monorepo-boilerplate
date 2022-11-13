@@ -1,4 +1,3 @@
-import { CreateUserRequestDto } from '@nest-react-native-monorepo/data-interface';
 import {
   BadRequestException,
   Injectable,
@@ -39,10 +38,11 @@ export class UserService {
   createOne({
     username,
     email,
-    // @ts-expect-error uncomment OAuthMethod field in CreateUserRequestDto
     oAuthMethod,
     oAuthId = null,
-  }: CreateUserRequestDto): Promise<UserEntity> {
+  }: Pick<UserEntity, 'username' | 'email' | 'oAuthMethod'> & {
+    oAuthId?: string;
+  }): Promise<UserEntity> {
     const user = this.userRepository.create();
 
     if (oAuthMethod !== OAuthMethod.LOCAL && oAuthId === null) {

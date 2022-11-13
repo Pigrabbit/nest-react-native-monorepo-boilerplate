@@ -1,3 +1,3 @@
-import { UserEntity } from '../modules/user/user.entity';
+import { UserEntity } from '@nest-react-native-monorepo/user-domain';
 
 export type UserFromToken = Pick<UserEntity, 'id' | 'username' | 'role'>;

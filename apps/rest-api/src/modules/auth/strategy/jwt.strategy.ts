@@ -16,7 +16,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   validate(payload: AccessTokenPayload): UserFromToken {
-    // @ts-expect-error uncomment role field in AccessTokenPayload
     return { id: payload.sub, username: payload.username, role: payload.role };
   }
 }

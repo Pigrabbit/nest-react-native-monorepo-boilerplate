@@ -1,5 +1,5 @@
+import { AbstractEntity } from '@nest-react-native-monorepo/abstract';
 import { Entity, Column } from 'typeorm';
-import { AbstractEntity } from '../../common/entity.abstract';
 
 export enum UserRole {
   ADMIN = 'ADMIN',

@@ -6,12 +6,14 @@ import {
   InvalidRefreshTokenException,
   RefreshTokenPayload,
 } from '@nest-react-native-monorepo/data-interface';
+import {
+  UserService,
+  OAuthMethod,
+} from '@nest-react-native-monorepo/user-domain';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { hoursToSeconds, minutesToSeconds } from 'date-fns';
-
-import { OAuthMethod, UserEntity } from '../user/user.entity';
-import { UserService } from '../user/user.service';
+import { UserFromToken } from '../../interfaces';
 
 @Injectable()
 export class AuthService {
@@ -31,7 +33,7 @@ export class AuthService {
     return user;
   }
 
-  getSearchParam(user: UserEntity): URLSearchParams {
+  getSearchParam(user: UserFromToken): URLSearchParams {
     const accessToken = this.createAccessToken(user);
     const refreshToken = this.createRefreshToken(user);
 
@@ -86,15 +88,14 @@ export class AuthService {
     }
   }
 
-  createAccessToken(user: UserEntity): string {
+  createAccessToken(user: UserFromToken): string {
     const { id, username, role } = user;
-    // @ts-expect-error uncomment role field in AccessTokenPayload
     const payload: AccessTokenPayload = { sub: id, username, role };
 
     return this.jwtService.sign(payload, { expiresIn: '5m' });
   }
 
-  createRefreshToken(user: UserEntity): string {
+  createRefreshToken(user: UserFromToken): string {
     const { id } = user;
     const payload: RefreshTokenPayload = { sub: id };
 

@@ -1,8 +1,10 @@
+import { UserEntity } from '@nest-react-native-monorepo/user-domain';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtAuthGuard } from './guards';
 import { AuthModule } from './modules/auth/auth.module';
-import { UserEntity } from './modules/user/user.entity';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
@@ -34,5 +36,6 @@ import { UserModule } from './modules/user/user.module';
     AuthModule,
     UserModule,
   ],
+  providers: [{ provide: APP_GUARD, useClass: JwtAuthGuard }],
 })
 export class AppModule {}

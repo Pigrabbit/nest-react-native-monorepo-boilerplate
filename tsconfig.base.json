@@ -16,8 +16,15 @@
     "baseUrl": ".",
     "paths": {
       "@minion/design-system": ["libs/design-system/src/index.ts"],
+      "@nest-react-native-monorepo/abstract": ["libs/abstract/src/index.ts"],
+      "@nest-react-native-monorepo/auth-domain": [
+        "libs/auth-domain/src/index.ts"
+      ],
       "@nest-react-native-monorepo/data-interface": [
         "libs/data-interface/src/index.ts"
+      ],
+      "@nest-react-native-monorepo/user-domain": [
+        "libs/user-domain/src/index.ts"
       ]
     }
   },

@@ -12,7 +12,7 @@ import {
 import { User } from '../../decorators/user.decorator';
 import { OauthFilter } from '../../filters/oauth.filter';
 import { KakaoOauthGuard } from '../../guards';
-import { UserEntity } from '../user/user.entity';
+import { UserFromToken } from '../../interfaces';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -36,7 +36,7 @@ export class AuthController {
   @UseGuards(KakaoOauthGuard)
   @Redirect()
   @Get('login/kakao/redirect')
-  kakaoOAuthRedirect(@User() user: UserEntity) {
+  kakaoOAuthRedirect(@User() user: UserFromToken) {
     const params = this.authService.getSearchParam(user);
     return { url: `success?${params.toString()}` };
   }
