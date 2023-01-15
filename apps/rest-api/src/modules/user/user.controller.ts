@@ -1,9 +1,9 @@
-import { JwtAuthGuard } from '@nest-react-native-monorepo/auth-domain';
 import { CreateUserRequestDto } from '@nest-react-native-monorepo/data-interface';
-import { UserService } from '@nest-react-native-monorepo/user-domain';
+import { UserService } from '@nest-react-native-monorepo/domain';
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 
 import { User } from '../../decorators/user.decorator';
+import { JwtAuthGuard } from '../auth/guards';
 
 @Controller('user')
 export class UserController {

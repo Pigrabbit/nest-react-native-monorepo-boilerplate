@@ -1,4 +1,4 @@
-import { UserRole } from '@nest-react-native-monorepo/user-domain';
+import { UserRole } from '@nest-react-native-monorepo/domain';
 
 export interface AccessTokenPayload {
   sub: string;

@@ -37,5 +37,10 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
   },
-  "defaultProject": "mobile-app"
+  "defaultProject": "mobile-app",
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": true
+    }
+  }
 }

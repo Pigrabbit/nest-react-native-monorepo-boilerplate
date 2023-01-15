@@ -48,9 +48,10 @@ function OAuthLoginScreen() {
       const splitted = url.split('fail?');
       const oAuthId = splitted[splitted.length - 1];
 
-      Alert.alert(`not registered, oAuthId: ${oAuthId}`);
       // TODO: navigate to sign up screen
-
+      // Alert.alert(`not registered, oAuthId: ${oAuthId}`);
+      navigation.goBack();
+      navigation.navigate('SignUpNameFormScreen', { oAuthMethod: params.oAuthMethod, oAuthId });
       return false;
     }
 

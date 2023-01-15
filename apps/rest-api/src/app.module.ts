@@ -1,4 +1,4 @@
-import { UserEntity } from '@nest-react-native-monorepo/user-domain';
+import { UserEntity } from '@nest-react-native-monorepo/domain';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -9,9 +9,7 @@ import { UserModule } from './modules/user/user.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      // envFilePath: !process.env.NODE_ENV
-      //   ? '.env.development'
-      //   : `.env.${process.env.NODE_ENV}`,
+      envFilePath: !process.env.NODE_ENV ? '.env.development' : `.env.${process.env.NODE_ENV}`,
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({

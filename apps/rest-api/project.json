@@ -19,13 +19,7 @@
         "production": {
           "optimization": true,
           "extractLicenses": true,
-          "inspect": false,
-          "fileReplacements": [
-            {
-              "replace": "apps/rest-api/src/environments/environment.ts",
-              "with": "apps/rest-api/src/environments/environment.prod.ts"
-            }
-          ]
+          "inspect": false
         }
       }
     },
@@ -38,6 +32,12 @@
         "production": {
           "buildTarget": "rest-api:build:production"
         }
+      }
+    },
+    "docker-compose": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker compose --env-file .env.development up -d"
       }
     },
     "lint": {

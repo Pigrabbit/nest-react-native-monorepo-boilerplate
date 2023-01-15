@@ -1,9 +1,10 @@
-import { AppleOauthGuard, AuthService, KakaoOauthGuard } from '@nest-react-native-monorepo/auth-domain';
 import { CreateTokenRequestDto, UserFromToken } from '@nest-react-native-monorepo/data-interface';
 import { Body, Controller, Get, Post, Redirect, Req, UseFilters, UseGuards } from '@nestjs/common';
 
 import { User } from '../../decorators/user.decorator';
 import { OauthFilter } from '../../filters/oauth.filter';
+import { AuthService } from './auth.service';
+import { KakaoOauthGuard, AppleOauthGuard } from './guards';
 
 @Controller('auth')
 export class AuthController {

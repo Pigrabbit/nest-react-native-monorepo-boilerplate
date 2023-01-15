@@ -7,13 +7,19 @@
     "start": {
       "executor": "@nrwl/react-native:start",
       "options": {
-        "port": 8081
+        "port": 8081,
+        "resetCache": true
       }
     },
     "serve": {
       "executor": "nx:run-commands",
       "options": {
         "command": "nx start mobile-app"
+      },
+      "configurations": {
+        "dev": {
+          "command": "NODE_ENV=development nx start mobile-app"
+        }
       }
     },
     "run-ios": {
@@ -34,10 +40,7 @@
     },
     "build-android": {
       "executor": "@nrwl/react-native:build-android",
-      "outputs": [
-        "{projectRoot}/android/app/build/outputs/bundle",
-        "{projectRoot}/android/app/build/outputs/apk"
-      ],
+      "outputs": ["{projectRoot}/android/app/build/outputs/bundle", "{projectRoot}/android/app/build/outputs/apk"],
       "options": {}
     },
     "bundle-android": {

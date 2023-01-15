@@ -1,0 +1,18 @@
+version: "3.9"
+
+services: 
+  db_dev:
+    platform: linux/x86_64
+    image: mysql
+    container_name: "monorepo-mysql"
+    environment: 
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - TZ=Asia/Seoul
+    volumes: 
+      - ./config:/etc/mysql/conf.d
+    ports: 
+      - 33060:3306
+    restart: on-failure

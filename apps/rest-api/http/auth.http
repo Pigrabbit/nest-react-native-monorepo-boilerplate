@@ -1,0 +1,31 @@
+
+
+
+
+#############
+#############
+#############
+
+### POST /token refresh token
+POST http://localhost:3000/auth/token
+Content-Type: application/json
+
+{
+  "grantType": "refresh_token",
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjY4MjU5OTcyLCJleHAiOjE2NzA4NTE5NzJ9.kHffPNouj7MKzH-Gg1KHisYG3CMreKLxVjHMM0_0iRw"
+}
+
+### Get user info with token
+GET http://localhost:3000/user/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJwaWdyYWJiaXQiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE2NjgyNTk5NzIsImV4cCI6MTY2ODI2MDI3Mn0.g7tGC2jFlqoBBESGhKIy5-5ef0W8yjRqob8xVX6yiiQ
+
+
+### POST user
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "username": "nestjs-hello",
+  "email": "noreply@nest.com",
+  "oAuthMethod": "LOCAL"
+}

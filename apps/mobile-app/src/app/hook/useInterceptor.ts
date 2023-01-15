@@ -1,9 +1,8 @@
-import {
-  ExpiredAccessTokenException,
-  ExpiredRefreshTokenException,
-  InvalidRefreshTokenException,
-} from '@nest-react-native-monorepo/data-interface';
-import { HttpException } from '@nestjs/common';
+// import {
+//   ExpiredAccessTokenException,
+//   ExpiredRefreshTokenException,
+//   InvalidRefreshTokenException,
+// } from '@nest-react-native-monorepo/data-interface';
 import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -18,7 +17,11 @@ interface ErrorResponseData {
   statusCode: number;
 }
 
-const isExceptionMatched = <T extends HttpException>(err: ErrorResponseData, exception: T): boolean => {
+// TODO: move to other lib project => eg. utils
+const isExceptionMatched = <T extends { getStatus: () => number; message: string }>(
+  err: ErrorResponseData,
+  exception: T
+): boolean => {
   return err.statusCode === exception.getStatus() && err.message === exception.message;
 };
 
@@ -37,8 +40,8 @@ export function useInterceptor() {
     };
 
     const error = async (err: AxiosError<ErrorResponseData>) => {
-      const invalidRefreshTokenError = isExceptionMatched(err.response?.data, new InvalidRefreshTokenException());
-      const expiredRefreshTokenError = isExceptionMatched(err.response?.data, new ExpiredRefreshTokenException());
+      const invalidRefreshTokenError = isExceptionMatched(err.response?.data, new Error());
+      const expiredRefreshTokenError = isExceptionMatched(err.response?.data, new Error());
 
       if (invalidRefreshTokenError || expiredRefreshTokenError) {
         console.error('Refresh token expired or invalid');
@@ -46,7 +49,7 @@ export function useInterceptor() {
         return;
       }
 
-      const accessTokenExpiredError = isExceptionMatched(err.response?.data, new ExpiredAccessTokenException());
+      const accessTokenExpiredError = isExceptionMatched(err.response?.data, new Error());
 
       if (accessTokenExpiredError && retryCount < MAX_RETRY) {
         console.error('Access token expired');

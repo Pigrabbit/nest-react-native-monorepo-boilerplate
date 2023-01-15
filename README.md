@@ -8,6 +8,13 @@ This repository is a boilerplate for nestjs, react-native project which built wi
 $ yarn install
 ```
 
+### Development in local environment
+
+```
+$ yarn nx serve mobile-app
+$ yarn nx serve rest-api
+```
+
 Check nx commands in `project.json` file placed in each directory.
 
 ## Workspace structure
@@ -33,3 +40,8 @@ Provides basic authentication
 - [ ] Sign up
 - [ ] Keep user signed in
 - [ ] Refresh access token when it has been expired
+
+Multiple Environment
+
+Dockerize
+

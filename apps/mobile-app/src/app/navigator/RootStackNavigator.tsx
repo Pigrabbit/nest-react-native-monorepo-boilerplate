@@ -5,6 +5,9 @@ import React, { useRef } from 'react';
 
 import { useAuth } from '../hook/useAuth';
 import OAuthLoginScreen from '../screen/OAuthLoginScreen';
+import SignUpCompletedScreen from '../screen/SignUpCompletedScreen';
+import SignUpEmailFormScreen from '../screen/SignUpEmailFormScreen';
+import SignUpNameFormScreen from '../screen/SignUpNameFormScreen';
 import WelcomeScreen from '../screen/WelcomeScreen';
 import MainTabNavigator from './MainTabNavigator';
 
@@ -12,8 +15,18 @@ export type RootStackParamList = {
   WelcomeScreen: undefined;
   Main: undefined;
   OAuthLoginScreen: {
-    oAuthMethod: 'kakao' | 'apple';
+    oAuthMethod: 'KAKAO' | 'APPLE' | 'LOCAL';
   };
+  SignUpNameFormScreen: {
+    oAuthMethod: 'KAKAO' | 'APPLE' | 'LOCAL';
+    oAuthId: string;
+  };
+  SignUpEmailFormScreen: {
+    oAuthMethod: 'KAKAO' | 'APPLE' | 'LOCAL';
+    oAuthId: string;
+    username: string;
+  };
+  SignUpCompletedScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -43,6 +56,21 @@ const RootStackNavigator = () => {
                   <IconButton icon={() => <CloseIcon />} onPress={() => navigationRef.current?.goBack()} />
                 ),
               }}
+            />
+            <Stack.Screen
+              name="SignUpNameFormScreen"
+              component={SignUpNameFormScreen}
+              options={{ header: () => null }}
+            />
+            <Stack.Screen
+              name="SignUpEmailFormScreen"
+              component={SignUpEmailFormScreen}
+              options={{ header: () => null }}
+            />
+            <Stack.Screen
+              name="SignUpCompletedScreen"
+              component={SignUpCompletedScreen}
+              options={{ header: () => null }}
             />
           </Stack.Group>
         )}
