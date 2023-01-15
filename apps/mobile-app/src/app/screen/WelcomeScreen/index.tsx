@@ -15,7 +15,9 @@ const WelcomeScreen = () => {
   const navigation = useNavigation<ScreenNavigationProp>();
   return (
     <Layout style={styles.container}>
-      <Typography variant="h2">Welcome 👋</Typography>
+      <Typography variant="h2" testID="welcome-heading">
+        Welcome 👋
+      </Typography>
       <View style={{ flex: 1 }} />
       <KakaoButton
         label="Sign in with Kakao"
