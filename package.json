@@ -40,7 +40,6 @@
     "zod": "^3.19.1"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.20.7",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
     "@nrwl/cli": "15.0.8",
