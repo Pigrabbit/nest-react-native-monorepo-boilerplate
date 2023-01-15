@@ -1,8 +1,8 @@
-// import {
-//   ExpiredAccessTokenException,
-//   ExpiredRefreshTokenException,
-//   InvalidRefreshTokenException,
-// } from '@nest-react-native-monorepo/data-interface';
+import {
+  ExpiredAccessTokenException,
+  ExpiredRefreshTokenException,
+  InvalidRefreshTokenException,
+} from '@nest-react-native-monorepo/data-interface';
 import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -40,8 +40,8 @@ export function useInterceptor() {
     };
 
     const error = async (err: AxiosError<ErrorResponseData>) => {
-      const invalidRefreshTokenError = isExceptionMatched(err.response?.data, new Error());
-      const expiredRefreshTokenError = isExceptionMatched(err.response?.data, new Error());
+      const invalidRefreshTokenError = isExceptionMatched(err.response?.data, new InvalidRefreshTokenException());
+      const expiredRefreshTokenError = isExceptionMatched(err.response?.data, new ExpiredRefreshTokenException());
 
       if (invalidRefreshTokenError || expiredRefreshTokenError) {
         console.error('Refresh token expired or invalid');
@@ -49,7 +49,7 @@ export function useInterceptor() {
         return;
       }
 
-      const accessTokenExpiredError = isExceptionMatched(err.response?.data, new Error());
+      const accessTokenExpiredError = isExceptionMatched(err.response?.data, new ExpiredAccessTokenException());
 
       if (accessTokenExpiredError && retryCount < MAX_RETRY) {
         console.error('Access token expired');
