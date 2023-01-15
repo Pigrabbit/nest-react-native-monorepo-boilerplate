@@ -15,33 +15,35 @@ $ yarn nx serve mobile-app
 $ yarn nx serve rest-api
 ```
 
-Check nx commands in `project.json` file placed in each directory.
+Check more nx commands in `project.json` file placed in each directory.
 
 ## Workspace structure
 
 ```
 apps
 ├── mobile-app: react-native project
+├── mobile-app-e2e: react-native e2e project with detox
 └── rest-api: nestjs project
 libs
 ├── data-interface: interface shared between mobile-app and rest-api
-├── abstract: lib of abstracts
-├── user-domain: user domain module
-├── auth-domain: auth domain module includes passport strategy and guards
+├── domain: every (nestjs) domain module stands here
 └── design-system: react-native design system for mobile-app
 ```
 
 ## Features
 
-Provides basic authentication
-
-- [ ] Sign In with Apple
-- [ ] Sign In with Kakao
-- [ ] Sign up
-- [ ] Keep user signed in
-- [ ] Refresh access token when it has been expired
-
-Multiple Environment
-
-Dockerize
-
+- [X] Authentication
+  - [X] OAuth(Sign In with Apple, Kakao)
+  - [X] Sign Up (username, email)
+  - [X] Keep user signed in 
+  - [X] Handle exprired access token
+- [ ] Configuration
+  - [X] Multiple Environment for Mobile App(development, staging, production)
+  - [ ] Multiple Environment for Nest Application(development, staging, production)
+- [ ] Deployment
+  - [ ] CI with Github Action
+  - [ ] Over-the-air update with CodePush
+  - [ ] Dockerize
+- [ ] Monitoring and Analytics
+  - [ ] Sentry
+  - [ ] Firebase
