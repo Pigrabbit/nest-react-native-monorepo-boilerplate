@@ -17,7 +17,6 @@ interface ErrorResponseData {
   statusCode: number;
 }
 
-// TODO: move to other lib project => eg. utils
 const isExceptionMatched = <T extends { getStatus: () => number; message: string }>(
   err: ErrorResponseData,
   exception: T
