@@ -1,3 +1,4 @@
+import crashlytics from '@react-native-firebase/crashlytics';
 import * as Sentry from '@sentry/react-native';
 
 interface Logger {
@@ -37,6 +38,7 @@ class ProductionLogger implements Logger {
     Sentry.captureMessage(message, 'warning');
   }
   error(message?: any, ...optionalParams: any[]) {
+    crashlytics().recordError(message);
     Sentry.captureMessage(message, 'error');
   }
 }

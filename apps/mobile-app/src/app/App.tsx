@@ -3,6 +3,7 @@ import React from 'react';
 
 import Config from './config';
 import { AuthContextProvider } from './context/AuthContext';
+import { useAppState } from './hook/useAppState';
 import RootStackNavigator from './navigator/RootStackNavigator';
 import AxiosInterceptor from './util/AxiosInterceptor';
 
@@ -22,6 +23,8 @@ Sentry.init({
 });
 
 export const App = () => {
+  useAppState();
+
   return (
     <AuthContextProvider>
       <AxiosInterceptor />

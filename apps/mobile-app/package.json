@@ -30,7 +30,10 @@
     "react-hook-form": "*",
     "zod": "*",
     "@sentry/react-native": "*",
-    "axios": "*"
+    "axios": "*",
+    "@react-native-firebase/app": "*",
+    "@react-native-firebase/analytics": "*",
+    "@react-native-firebase/crashlytics": "*"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "*",

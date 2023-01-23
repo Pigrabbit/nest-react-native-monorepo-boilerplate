@@ -1,4 +1,5 @@
 import { Layout, Typography } from '@minion/design-system';
+import crashlytics from '@react-native-firebase/crashlytics';
 import * as Sentry from '@sentry/react-native';
 import React, { useEffect, useState } from 'react';
 
@@ -8,9 +9,17 @@ const HomeScreen = () => {
   const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
-    getMe().then((data) => {
+    getMe().then(async (data) => {
       setUsername(data.username);
-      Sentry.setUser({ username: data.username, email: data.email });
+
+      Sentry.setUser({ id: data.id, username: data.username, email: data.email });
+      await Promise.all([
+        crashlytics().setUserId(data.id),
+        crashlytics().setAttributes({
+          username: data.username,
+          email: data.email,
+        }),
+      ]);
     });
   }, []);
 

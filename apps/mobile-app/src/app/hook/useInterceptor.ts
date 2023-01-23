@@ -7,6 +7,7 @@ import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { useEffect, useMemo, useState } from 'react';
 
 import axiosInstance from '../util/axios';
+import { logger } from '../util/logger';
 import { useAuth } from './useAuth';
 
 const MAX_RETRY = 3;
@@ -43,7 +44,7 @@ export function useInterceptor() {
       const expiredRefreshTokenError = isExceptionMatched(err.response?.data, new ExpiredRefreshTokenException());
 
       if (invalidRefreshTokenError || expiredRefreshTokenError) {
-        console.error('Refresh token expired or invalid');
+        logger.warn('Refresh token expired or invalid');
         refreshTokenExpired();
         return;
       }
@@ -51,7 +52,7 @@ export function useInterceptor() {
       const accessTokenExpiredError = isExceptionMatched(err.response?.data, new ExpiredAccessTokenException());
 
       if (accessTokenExpiredError && retryCount < MAX_RETRY) {
-        console.error('Access token expired');
+        logger.warn('Access token expired');
         setRetryCount((prev) => prev + 1);
 
         return refreshAccessToken().then((issuedAccessToken) => {

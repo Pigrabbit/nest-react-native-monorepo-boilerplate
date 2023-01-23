@@ -41,9 +41,20 @@ libs
   - [X] Multiple Environment for Mobile App(development, staging, production)
   - [ ] Multiple Environment for Nest Application(development, staging, production)
 - [ ] Deployment
-  - [ ] CI with Github Action
+  - [X] CI with Github Action
   - [ ] Over-the-air update with CodePush
   - [ ] Dockerize
+- [ ] Testing
+  - [X] Unit Test
+  - [ ] E2E Test
+  - [ ] Test Coverage
 - [ ] Monitoring and Analytics
   - [ ] Sentry
   - [ ] Firebase
+
+## Configure secrets
+
+| Name | Android | iOS |
+| ---- | ----- | --- |
+| Sentry properties | put sentry.properties at apps/mobile-app/android | put sentry.properties at apps/mobile-app/ios |
+| Google Services(Firebase) | put google-services.json at apps/mobile-app/android, apps/mobile-app/android/src/beta, apps/mobile-app/android/src/dev   | put GoogleService-info.plist at apps/mobile-app/ios, apps/mobile-app/ios/MobileAppBeta, apps/mobile-app/ios/MobileAppDevelop | 

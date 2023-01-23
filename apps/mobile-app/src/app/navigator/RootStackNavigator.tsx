@@ -1,8 +1,10 @@
 import { IconButton, CloseIcon } from '@minion/design-system';
+import analytics from '@react-native-firebase/analytics';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useRef } from 'react';
 
+import { routingInstrumentation } from '../App';
 import { useAuth } from '../hook/useAuth';
 import OAuthLoginScreen from '../screen/OAuthLoginScreen';
 import SignUpCompletedScreen from '../screen/SignUpCompletedScreen';
@@ -35,9 +37,30 @@ const RootStackNavigator = () => {
   const { authenticated } = useAuth();
 
   const navigationRef = useRef<NavigationContainerRef<RootStackParamList>>(null);
+  const routeNameRef = useRef<string | undefined>();
+
+  const handleChangeNavigationState = async () => {
+    const prevRouteName = routeNameRef.current;
+    const currentRouteName = navigationRef.current?.getCurrentRoute()?.name;
+
+    if (prevRouteName !== currentRouteName) {
+      await analytics().logScreenView({
+        screen_name: currentRouteName,
+        screen_class: currentRouteName,
+      });
+    }
+    routeNameRef.current = currentRouteName;
+  };
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer
+      ref={navigationRef}
+      onReady={() => {
+        routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name;
+        routingInstrumentation.registerNavigationContainer(navigationRef);
+      }}
+      onStateChange={handleChangeNavigationState}
+    >
       <Stack.Navigator>
         {authenticated ? (
           <Stack.Group>
