@@ -48,9 +48,9 @@ libs
   - [X] Unit Test
   - [ ] E2E Test
   - [ ] Test Coverage
-- [ ] Monitoring and Analytics
-  - [ ] Sentry
-  - [ ] Firebase
+- [X] Monitoring and Analytics
+  - [X] Sentry
+  - [x] Firebase
 
 ## Configure secrets
 
