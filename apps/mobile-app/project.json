@@ -66,12 +66,19 @@
         "lintFilePatterns": ["apps/mobile-app/**/*.{ts,tsx,js,jsx}"]
       }
     },
-    "test": {
+    "jest": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/mobile-app/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx build data-interface", "nx jest mobile-app"],
+        "parallel": false
       }
     }
   },
