@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/react-native';
 import { useContext, useEffect } from 'react';
 import { Alert } from 'react-native';
 import * as Keychain from 'react-native-keychain';
@@ -36,6 +37,7 @@ export function useAuth() {
   const logout = (): void => {
     Keychain.resetGenericPassword();
     dispatch({ type: USER_LOGOUT });
+    Sentry.setUser(null);
   };
 
   const refreshTokenExpired = (): void => {

@@ -13,8 +13,6 @@
     "@storybook/addon-ondevice-controls": "*",
     "@storybook/addon-ondevice-notes": "*",
     "@storybook/react-native": "*",
-    "@testing-library/jest-native": "*",
-    "@testing-library/react-native": "*",
     "metro-config": "*",
     "react": "*",
     "react-native": "*",
@@ -27,9 +25,16 @@
     "react-native-svg": "*",
     "react-native-webview": "*",
     "babel-plugin-module-resolver": "*",
-    "@storybook/addon-actions": "*"
+    "@storybook/addon-actions": "*",
+    "@hookform/resolvers": "*",
+    "react-hook-form": "*",
+    "zod": "*",
+    "@sentry/react-native": "*",
+    "axios": "*"
   },
   "devDependencies": {
-    "babel-plugin-module-resolver": "*"
+    "babel-plugin-module-resolver": "*",
+    "@testing-library/jest-native": "*",
+    "@testing-library/react-native": "*"
   }
 }

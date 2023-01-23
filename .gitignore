@@ -105,3 +105,5 @@ buck-out/
 apps/mobile-app-e2e/artifacts
 
 *.env*
+
+**/sentry.properties
