@@ -33,7 +33,8 @@
     "axios": "*",
     "@react-native-firebase/app": "*",
     "@react-native-firebase/analytics": "*",
-    "@react-native-firebase/crashlytics": "*"
+    "@react-native-firebase/crashlytics": "*",
+    "react-native-code-push": "*"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "*",

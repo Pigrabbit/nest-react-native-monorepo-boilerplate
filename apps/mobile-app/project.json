@@ -34,6 +34,29 @@
         "bundleOutput": "dist/apps/mobile-app/ios/main.jsbundle"
       }
     },
+    "codepush-ios": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false
+      },
+      "configurations": {
+        "production": {
+          "commands": [
+            "appcenter codepush release-react -a donghyuk/react-native-monorepo-iOS -d Production -m --description {args.description}"
+          ]
+        },
+        "beta": {
+          "commands": [
+            "appcenter codepush release-react -a donghyuk/react-native-monorepo-iOS -d Beta -m --description {args.description}"
+          ]
+        },
+        "development": {
+          "commands": [
+            "appcenter codepush release-react -a donghyuk/react-native-monorepo-iOS -d Development -m --description {args.description}"
+          ]
+        }
+      }
+    },
     "run-android": {
       "executor": "@nrwl/react-native:run-android",
       "options": {}
@@ -49,6 +72,29 @@
         "entryFile": "src/main.tsx",
         "platform": "android",
         "bundleOutput": "dist/apps/mobile-app/android/main.jsbundle"
+      }
+    },
+    "codepush-android": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false
+      },
+      "configurations": {
+        "production": {
+          "commands": [
+            "appcenter codepush release-react -a donghyuk/react-native-monorepo-Android -d Production -m --description {args.description}"
+          ]
+        },
+        "beta": {
+          "commands": [
+            "appcenter codepush release-react -a donghyuk/react-native-monorepo-Android -d Beta -m --description {args.description}"
+          ]
+        },
+        "development": {
+          "commands": [
+            "appcenter codepush release-react -a donghyuk/react-native-monorepo-Android -d Development -m --description {args.description}"
+          ]
+        }
       }
     },
     "sync-deps": {

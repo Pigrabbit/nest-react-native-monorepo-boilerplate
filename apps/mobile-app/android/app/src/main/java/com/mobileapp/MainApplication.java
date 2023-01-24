@@ -36,6 +36,11 @@ public class MainApplication extends Application implements ReactApplication {
         protected String getJSMainModuleName() {
           return "src/main.tsx";
         }
+
+        @Override
+        protected String getJSBundleFile() {
+            return CodePush.getJSBundleFile();
+        }
       };
 
   private final ReactNativeHost mNewArchitectureNativeHost =

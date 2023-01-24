@@ -1,4 +1,5 @@
 #import <Firebase.h>
+#import <CodePush/CodePush.h>
 #import "AppDelegate.h"
 
 #import <React/RCTBridge.h>
@@ -89,7 +90,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"src/main"];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  return [CodePush bundleURL];
 #endif
 }
 
