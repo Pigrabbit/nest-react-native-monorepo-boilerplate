@@ -1,11 +1,17 @@
 import * as Sentry from '@sentry/react-native';
 import React from 'react';
+import codePush, { CodePushOptions } from 'react-native-code-push';
 
 import Config from './config';
 import { AuthContextProvider } from './context/AuthContext';
 import { useAppState } from './hook/useAppState';
 import RootStackNavigator from './navigator/RootStackNavigator';
 import AxiosInterceptor from './util/AxiosInterceptor';
+
+const codePushOptions: CodePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME,
+};
 
 export const routingInstrumentation = new Sentry.ReactNavigationInstrumentation();
 
@@ -35,4 +41,4 @@ export const App = () => {
   );
 };
 
-export default Sentry.wrap(App);
+export default codePush(codePushOptions)(Sentry.wrap(App));

@@ -2,7 +2,8 @@ import { IconButton, CloseIcon } from '@minion/design-system';
 import analytics from '@react-native-firebase/analytics';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import CodePush from 'react-native-code-push';
 
 import { routingInstrumentation } from '../App';
 import { useAuth } from '../hook/useAuth';
@@ -11,6 +12,7 @@ import SignUpCompletedScreen from '../screen/SignUpCompletedScreen';
 import SignUpEmailFormScreen from '../screen/SignUpEmailFormScreen';
 import SignUpNameFormScreen from '../screen/SignUpNameFormScreen';
 import WelcomeScreen from '../screen/WelcomeScreen';
+import { logger } from '../util/logger';
 import MainTabNavigator from './MainTabNavigator';
 
 export type RootStackParamList = {
@@ -51,6 +53,19 @@ const RootStackNavigator = () => {
     }
     routeNameRef.current = currentRouteName;
   };
+
+  useEffect(() => {
+    const bootstrap = async () => {
+      const remotePackage = await CodePush.checkForUpdate();
+      if (remotePackage === null) return;
+
+      const localPackage = await remotePackage.download();
+      await localPackage.install(CodePush.InstallMode.IMMEDIATE);
+      // TODO: hide splash screen
+    };
+
+    bootstrap();
+  }, []);
 
   return (
     <NavigationContainer
