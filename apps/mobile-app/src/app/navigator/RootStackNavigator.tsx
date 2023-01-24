@@ -2,18 +2,16 @@ import { IconButton, CloseIcon } from '@minion/design-system';
 import analytics from '@react-native-firebase/analytics';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { useEffect, useRef } from 'react';
-import RNBootSplash from 'react-native-bootsplash';
-import CodePush from 'react-native-code-push';
+import React, { useRef } from 'react';
 
 import { routingInstrumentation } from '../App';
 import { useAuth } from '../hook/useAuth';
+import { useBootstrap } from '../hook/useBootstrap';
 import OAuthLoginScreen from '../screen/OAuthLoginScreen';
 import SignUpCompletedScreen from '../screen/SignUpCompletedScreen';
 import SignUpEmailFormScreen from '../screen/SignUpEmailFormScreen';
 import SignUpNameFormScreen from '../screen/SignUpNameFormScreen';
 import WelcomeScreen from '../screen/WelcomeScreen';
-import { logger } from '../util/logger';
 import MainTabNavigator from './MainTabNavigator';
 
 export type RootStackParamList = {
@@ -37,6 +35,7 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStackNavigator = () => {
+  useBootstrap();
   const { authenticated } = useAuth();
 
   const navigationRef = useRef<NavigationContainerRef<RootStackParamList>>(null);
@@ -54,25 +53,6 @@ const RootStackNavigator = () => {
     }
     routeNameRef.current = currentRouteName;
   };
-
-  useEffect(() => {
-    const bootstrap = async () => {
-      try {
-        const remotePackage = await CodePush.checkForUpdate();
-        if (remotePackage !== null) {
-          const localPackage = await remotePackage.download();
-          await localPackage.install(CodePush.InstallMode.IMMEDIATE);
-        }
-      } catch (error) {
-        logger.error(error);
-      } finally {
-        await RNBootSplash.hide({ fade: true, duration: 500 });
-        logger.log('hide splash screen');
-      }
-    };
-
-    bootstrap();
-  }, []);
 
   return (
     <NavigationContainer
