@@ -77,7 +77,7 @@
     "test": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["nx build data-interface", "nx jest mobile-app"],
+        "commands": ["nx build domain", "nx build data-interface", "nx jest mobile-app"],
         "parallel": false
       }
     }
