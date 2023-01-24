@@ -25,3 +25,10 @@ jest.mock('@react-native-firebase/crashlytics', () => {
     setAttributes: jest.fn(),
   });
 });
+
+jest.mock('react-native-bootsplash', () => {
+  return {
+    hide: jest.fn(),
+    getVisibilityStatus: jest.fn().mockResolvedValue('hidden'),
+  };
+});

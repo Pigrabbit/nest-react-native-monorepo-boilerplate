@@ -3,6 +3,7 @@ import analytics from '@react-native-firebase/analytics';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useEffect, useRef } from 'react';
+import RNBootSplash from 'react-native-bootsplash';
 import CodePush from 'react-native-code-push';
 
 import { routingInstrumentation } from '../App';
@@ -56,12 +57,18 @@ const RootStackNavigator = () => {
 
   useEffect(() => {
     const bootstrap = async () => {
-      const remotePackage = await CodePush.checkForUpdate();
-      if (remotePackage === null) return;
-
-      const localPackage = await remotePackage.download();
-      await localPackage.install(CodePush.InstallMode.IMMEDIATE);
-      // TODO: hide splash screen
+      try {
+        const remotePackage = await CodePush.checkForUpdate();
+        if (remotePackage !== null) {
+          const localPackage = await remotePackage.download();
+          await localPackage.install(CodePush.InstallMode.IMMEDIATE);
+        }
+      } catch (error) {
+        logger.error(error);
+      } finally {
+        await RNBootSplash.hide({ fade: true, duration: 500 });
+        logger.log('hide splash screen');
+      }
     };
 
     bootstrap();

@@ -54,6 +54,9 @@
 		E0C6A0D2297EBDAF00950FDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0C6A0D1297EBDAF00950FDA /* GoogleService-Info.plist */; };
 		E0C6A0D6297EBFF800950FDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0C6A0D5297EBFF800950FDA /* GoogleService-Info.plist */; };
 		E0C6A0DB297EC05C00950FDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0C6A0DA297EC05C00950FDA /* GoogleService-Info.plist */; };
+		E0C6A0DD297FE87F00950FDA /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C6A0DC297FE87F00950FDA /* BootSplash.storyboard */; };
+		E0C6A0DE297FE87F00950FDA /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C6A0DC297FE87F00950FDA /* BootSplash.storyboard */; };
+		E0C6A0DF297FE87F00950FDA /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C6A0DC297FE87F00950FDA /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +110,7 @@
 		E0C6A0D1297EBDAF00950FDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E0C6A0D5297EBFF800950FDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E0C6A0DA297EC05C00950FDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E0C6A0DC297FE87F00950FDA /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = MobileApp/BootSplash.storyboard; sourceTree = "<group>"; };
 		E7D627CBAFCE7132FCCF2CA5 /* Pods-App-MobileAppBeta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-MobileAppBeta.release.xcconfig"; path = "Target Support Files/Pods-App-MobileAppBeta/Pods-App-MobileAppBeta.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FDBF142D84F2478D947CF9D0 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraLight.otf"; path = "../assets/fonts/Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 		13B07FAE1A68108700A75B9A /* MobileApp */ = {
 			isa = PBXGroup;
 			children = (
+				E0C6A0DC297FE87F00950FDA /* BootSplash.storyboard */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -423,6 +428,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E0C6A0DD297FE87F00950FDA /* BootSplash.storyboard in Resources */,
 				30A9E5D28BC34AF2B21371A7 /* Pretendard-Black.otf in Resources */,
 				AC2DE1C716DD4527A085E1EE /* Pretendard-Bold.otf in Resources */,
 				5CD30B87E348425BB9E51328 /* Pretendard-ExtraBold.otf in Resources */,
@@ -442,6 +448,7 @@
 			files = (
 				E0413F33291F8A780017F2D9 /* LaunchScreen.storyboard in Resources */,
 				E0413F34291F8A780017F2D9 /* Images.xcassets in Resources */,
+				E0C6A0DF297FE87F00950FDA /* BootSplash.storyboard in Resources */,
 				E0413F35291F8A780017F2D9 /* Pretendard-Black.otf in Resources */,
 				E0413F36291F8A780017F2D9 /* Pretendard-Bold.otf in Resources */,
 				E0C6A0DB297EC05C00950FDA /* GoogleService-Info.plist in Resources */,
@@ -461,6 +468,7 @@
 			files = (
 				E08F77C1291FAD3D00F60F87 /* LaunchScreen.storyboard in Resources */,
 				E08F77C2291FAD3D00F60F87 /* Images.xcassets in Resources */,
+				E0C6A0DE297FE87F00950FDA /* BootSplash.storyboard in Resources */,
 				E0C6A0D6297EBFF800950FDA /* GoogleService-Info.plist in Resources */,
 				E08F77C3291FAD3D00F60F87 /* Pretendard-Black.otf in Resources */,
 				E08F77C4291FAD3D00F60F87 /* Pretendard-Bold.otf in Resources */,
